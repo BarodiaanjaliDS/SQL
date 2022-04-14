@@ -1,0 +1,19 @@
+
+Day 1: Salaries Differences
+
+Problem Statement: Write a query that calculates the difference between the highest salaries found in the marketing and engineering departments. Output just the absolute difference in salaries.
+
+SQL Query:
+select abs((select max(salary) from 
+db_employee emp join db_dept dept 
+on emp.department_id=dept.id
+where dept.department = 'marketing'
+)-
+(select max(salary) from 
+db_employee emp join db_dept dept 
+on emp.department_id=dept.id
+where dept.department = 'engineering'
+)) as salary_diff;
+
+
+Takeaway: Use of minus operator between two select queries.
